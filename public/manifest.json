@@ -1,0 +1,21 @@
+{
+  "name": "Notes App - Beautiful Session-Based Notes",
+  "short_name": "Notes App",
+  "description": "A beautiful, fast notes app with session storage, dark mode, and customizable themes",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#3b82f6",
+  "orientation": "portrait-primary",
+  "categories": ["productivity", "utilities"],
+  "lang": "en",
+  "scope": "/",
+  "icons": [
+    {
+      "src": "/vite.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
