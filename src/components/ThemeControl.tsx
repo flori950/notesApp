@@ -3,23 +3,20 @@ import { useSessionStorage } from '../hooks/use-session-storage';
 
 export type Theme = 'light' | 'dark';
 export type AccentColor = 'blue' | 'purple' | 'emerald' | 'orange' | 'pink' | 'mint';
-export type Density = 'compact' | 'comfortable' | 'spacious';
 
 interface ThemeControlProps {
   className?: string;
 }
 
-export const ThemeControl: React.FC<ThemeControlProps> = ({ className = '' }) => {
+export const ThemeControl = ({ className = '' }: ThemeControlProps) => {
   const [theme, setTheme] = useSessionStorage<Theme>('theme', 'light');
   const [accent, setAccent] = useSessionStorage<AccentColor>('accent', 'blue');
-  const [density, setDensity] = useSessionStorage<Density>('density', 'comfortable');
 
   // Apply theme attributes to document element
   useEffect(() => {
     document.documentElement.setAttribute('data-theme', theme);
     document.documentElement.setAttribute('data-accent', accent);
-    document.documentElement.setAttribute('data-density', density);
-  }, [theme, accent, density]);
+  }, [theme, accent]);
 
   const toggleTheme = () => {
     setTheme(prev => prev === 'light' ? 'dark' : 'light');
@@ -32,12 +29,6 @@ export const ThemeControl: React.FC<ThemeControlProps> = ({ className = '' }) =>
     { value: 'orange', label: 'Sunset Orange', emoji: '🟠' },
     { value: 'pink', label: 'Cherry Pink', emoji: '🌸' },
     { value: 'mint', label: 'Cool Mint', emoji: '💚' },
-  ];
-
-  const densityOptions: { value: Density; label: string; icon: string }[] = [
-    { value: 'compact', label: 'Compact', icon: '📱' },
-    { value: 'comfortable', label: 'Comfortable', icon: '💻' },
-    { value: 'spacious', label: 'Spacious', icon: '🖥️' },
   ];
 
   return (
@@ -73,31 +64,6 @@ export const ThemeControl: React.FC<ThemeControlProps> = ({ className = '' }) =>
             >
               <span className="text-lg" role="img" aria-hidden="true">
                 {option.emoji}
-              </span>
-            </button>
-          ))}
-        </div>
-      </div>
-
-      {/* Density Selector */}
-      <div className="flex items-center gap-2">
-        <span className="text-xs text-tertiary font-medium sr-only">Density:</span>
-        <div className="flex gap-1">
-          {densityOptions.map((option) => (
-            <button
-              key={option.value}
-              onClick={() => setDensity(option.value)}
-              className={`btn btn-sm rounded-xl transition-all duration-300 ${
-                density === option.value 
-                  ? 'btn-primary shadow-lg' 
-                  : 'btn-ghost opacity-60 hover:opacity-90'
-              }`}
-              title={`Set ${option.label} density`}
-              aria-label={`Set ${option.label} density`}
-              aria-pressed={density === option.value}
-            >
-              <span className="text-sm" role="img" aria-hidden="true">
-                {option.icon}
               </span>
             </button>
           ))}

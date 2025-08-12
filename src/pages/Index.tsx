@@ -3,7 +3,7 @@ import { ThemeControl } from '../components/ThemeControl';
 import { NotesApp } from '../components/notes/NotesApp';
 import { setupCSP, createHoneypot, securityManager } from '../utils/security';
 
-export const Index: React.FC = () => {
+export const Index = () => {
   // Initialize security features
   useEffect(() => {
     // Set up Content Security Policy

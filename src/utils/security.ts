@@ -8,8 +8,8 @@ interface RateLimitEntry {
 
 class SecurityManager {
   private rateLimits: Map<string, RateLimitEntry> = new Map();
-  private readonly MAX_ACTIONS_PER_MINUTE = 30;
-  private readonly BLOCK_DURATION_MS = 60 * 1000; // 1 minute
+  private readonly MAX_ACTIONS_PER_MINUTE = 200; // Much more generous for typing
+  private readonly BLOCK_DURATION_MS = 10 * 1000; // Shorter block duration - 10 seconds
   private readonly CLEANUP_INTERVAL_MS = 5 * 60 * 1000; // 5 minutes
 
   constructor() {
@@ -33,8 +33,8 @@ class SecurityManager {
       return true;
     }
 
-    // Reset count if more than a minute has passed
-    if (now - entry.lastAction > 60 * 1000) {
+    // Reset count if more than 30 seconds has passed (more typing-friendly)
+    if (now - entry.lastAction > 30 * 1000) {
       entry.count = 1;
       entry.lastAction = now;
       entry.blocked = false;
@@ -85,7 +85,7 @@ class SecurityManager {
         eventCount++;
         setTimeout(() => eventCount--, eventWindow);
         
-        if (eventCount > 50) { // More than 50 events per second
+        if (eventCount > 500) { // Much more lenient - 500 events per second
           console.warn('Suspicious activity detected - too many events');
         }
       });
@@ -128,13 +128,12 @@ class SecurityManager {
    * Input sanitization
    */
   sanitizeInput(input: string): string {
-    // Basic XSS prevention
+    // Basic XSS prevention - preserve spaces for normal text
     return input
       .replace(/[<>]/g, '') // Remove < and >
       .replace(/javascript:/gi, '') // Remove javascript: protocol
       .replace(/on\w+=/gi, '') // Remove event handlers
-      .trim()
-      .slice(0, 10000); // Limit length
+      .slice(0, 10000); // Limit length but don't trim spaces
   }
 
   /**
