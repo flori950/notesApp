@@ -1,7 +1,6 @@
 import { useState, useCallback } from 'react';
 import { useSessionStorage } from '../../hooks/use-session-storage';
 import { securityManager } from '../../utils/security';
-import jsPDF from 'jspdf';
 import { Toast as ToastComponent } from '../ui/Toast';
 
 // Types
@@ -82,9 +81,12 @@ export const NotesApp = () => {
     ));
   }, [setNotes]);
 
-  // Export note to PDF
-  const exportToPDF = useCallback((note: Note) => {
+  // Export note to PDF with dynamic import
+  const exportToPDF = useCallback(async (note: Note) => {
     try {
+      // Dynamic import for jsPDF to reduce initial bundle size
+      const { default: jsPDF } = await import('jspdf');
+      
       const pdf = new jsPDF();
       
       // Set font and title
