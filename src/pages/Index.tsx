@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { ThemeControl } from '../components/ThemeControl';
 import { NotesApp } from '../components/notes/NotesApp';
 import { setupCSP, createHoneypot, securityManager } from '../utils/security';

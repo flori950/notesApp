@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react';
+import { useState, useCallback } from 'react';
 import { useSessionStorage } from '../../hooks/use-session-storage';
 import { securityManager } from '../../utils/security';
 import jsPDF from 'jspdf';
