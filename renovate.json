@@ -3,10 +3,6 @@
   "extends": [
     "config:recommended"
   ],
-  "schedule": [
-    "before 6am on monday"
-  ],
-  "timezone": "Europe/Berlin",
   "packageRules": [
     {
       "matchUpdateTypes": ["minor", "patch", "pin", "digest"],
@@ -29,10 +25,7 @@
   "prHourlyLimit": 2,
   "lockFileMaintenance": {
     "enabled": true,
-    "automerge": true,
-    "schedule": [
-      "before 6am on monday"
-    ]
+    "automerge": true
   },
   "vulnerabilityAlerts": {
     "enabled": true
