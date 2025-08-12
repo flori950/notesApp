@@ -1,7 +1,7 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
-    "config:base"
+    "config:recommended"
   ],
   "schedule": [
     "before 6am on monday"
@@ -15,11 +15,16 @@
     {
       "matchDepTypes": ["devDependencies"],
       "automerge": true
+    },
+    {
+      "matchPackageNames": ["@types/*"],
+      "automerge": true
     }
   ],
   "labels": ["dependencies"],
-  "commitMessagePrefix": "chore(deps): ",
-  "prTitle": "{{commitMessagePrefix}}{{prettyNewMajor}}{{prettyNewMinor}}{{prettyNewPatch}}{{prettyNewValue}}",
+  "semanticCommits": "enabled",
+  "semanticCommitType": "chore",
+  "semanticCommitScope": "deps",
   "prConcurrentLimit": 10,
   "prHourlyLimit": 2,
   "lockFileMaintenance": {
@@ -28,5 +33,9 @@
     "schedule": [
       "before 6am on monday"
     ]
-  }
+  },
+  "vulnerabilityAlerts": {
+    "enabled": true
+  },
+  "osvVulnerabilityAlerts": true
 }
