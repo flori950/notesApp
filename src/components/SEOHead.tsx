@@ -9,11 +9,11 @@ interface SEOHeadProps {
 }
 
 export const SEOHead = ({
-  title = "Note App - Modern Note Taking",
-  description = "A beautiful and intuitive note-taking application with dark mode support, real-time search, and session storage. Create, organize, and manage your notes with ease.",
-  keywords = "notes, note taking, productivity, dark mode, session storage, PWA, modern UI, glass morphism",
+  title = "Notes App - Modern Note Taking by Florian Jäger",
+  description = "A beautiful and intuitive note-taking application with dark mode support, real-time search, and session storage. Created by Florian Jäger with modern web technologies.",
+  keywords = "notes, note taking, productivity, dark mode, session storage, PWA, modern UI, glass morphism, Florian Jäger",
   ogImage = "/og-image.png",
-  canonicalUrl = "https://noteapp.example.com"
+  canonicalUrl = "https://florian-hunter.de"
 }: SEOHeadProps) => {
   return (
     <Helmet>
@@ -21,7 +21,9 @@ export const SEOHead = ({
       <title>{title}</title>
       <meta name="description" content={description} />
       <meta name="keywords" content={keywords} />
-      <meta name="author" content="Note App Team" />
+      <meta name="author" content="Florian Jäger" />
+      <meta name="creator" content="Florian Jäger" />
+      <meta name="publisher" content="Florian Jäger" />
       <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
       <meta name="googlebot" content="index, follow" />
       <meta name="bingbot" content="index, follow" />
@@ -41,9 +43,9 @@ export const SEOHead = ({
       <meta property="og:image" content={ogImage} />
       <meta property="og:image:width" content="1200" />
       <meta property="og:image:height" content="630" />
-      <meta property="og:image:alt" content="Note App - Modern Note Taking Interface" />
+      <meta property="og:image:alt" content="Notes App - Modern Note Taking by Florian Jäger" />
       <meta property="og:url" content={canonicalUrl} />
-      <meta property="og:site_name" content="Note App" />
+      <meta property="og:site_name" content="Notes App by Florian Jäger" />
       <meta property="og:locale" content="en_US" />
       
       {/* Twitter Card */}
@@ -51,9 +53,9 @@ export const SEOHead = ({
       <meta name="twitter:title" content={title} />
       <meta name="twitter:description" content={description} />
       <meta name="twitter:image" content={ogImage} />
-      <meta name="twitter:image:alt" content="Note App - Modern Note Taking Interface" />
-      <meta name="twitter:site" content="@noteapp" />
-      <meta name="twitter:creator" content="@noteapp" />
+      <meta name="twitter:image:alt" content="Notes App - Modern Note Taking by Florian Jäger" />
+      <meta name="twitter:site" content="@flori950" />
+      <meta name="twitter:creator" content="@flori950" />
       
       {/* Additional Meta Tags */}
       <meta name="theme-color" content="#007AFF" />
@@ -68,7 +70,7 @@ export const SEOHead = ({
         {JSON.stringify({
           "@context": "https://schema.org",
           "@type": "WebApplication",
-          "name": "Note App",
+          "name": "Notes App",
           "description": description,
           "url": canonicalUrl,
           "applicationCategory": "ProductivityApplication",
@@ -79,8 +81,18 @@ export const SEOHead = ({
             "priceCurrency": "USD"
           },
           "author": {
-            "@type": "Organization",
-            "name": "Note App Team"
+            "@type": "Person",
+            "name": "Florian Jäger",
+            "url": "https://florian-hunter.de",
+            "sameAs": [
+              "https://github.com/flori950",
+              "https://florian-hunter.de"
+            ]
+          },
+          "creator": {
+            "@type": "Person",
+            "name": "Florian Jäger",
+            "url": "https://florian-hunter.de"
           }
         })}
       </script>
