@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { ThemeControl } from '../components/ThemeControl';
 import { NotesApp } from '../components/notes/NotesApp';
+import { Footer } from '../components/Footer';
 import { setupCSP, createHoneypot, securityManager } from '../utils/security';
 
 export const Index = () => {
@@ -51,6 +52,9 @@ export const Index = () => {
           </div>
         </div>
       </main>
+
+      {/* Footer - Full Width */}
+      <Footer />
     </div>
   );
 };
