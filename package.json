@@ -7,7 +7,9 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "ci": "npm ci --legacy-peer-deps",
+    "install:ci": "npm install --legacy-peer-deps"
   },
   "dependencies": {
     "jspdf": "^3.0.1",
